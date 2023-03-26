@@ -3,16 +3,16 @@ from .locators import ProductPageLocators
 
 
 class ProductPage(BasePage):
-    def should_be_add_product_to_basket(self):
-        self.add_product_to_basket()
+    def should_be_add_product_to_cart(self):
+        self.add_product_to_cart()
         self.get_quiz_result()
         self.should_product_name_in_message()
         self.should_product_price_in_message()
 
-    def add_product_to_basket(self):
+    def add_product_to_cart(self):
         """Нажимаем на кнопку 'Добавить в корзину'"""
-        add_to_basket_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
-        add_to_basket_button.click()
+        add_to_cart_button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON)
+        add_to_cart_button.click()
 
     def get_quiz_result(self):
         """Посчитать результат математического выражения и ввести ответ на печать"""
