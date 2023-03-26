@@ -23,7 +23,7 @@ class ProductPage(BasePage):
         - название товара совпадает с тем товаром, который был добавлен"""
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         message_product_added = self.browser.find_element(*ProductPageLocators.MESSAGE_PRODUCT_ADDED_TO_CART).text
-        assert product_name in message_product_added,\
+        assert product_name == message_product_added,\
             "The product name in the message does not match the product that was added to the cart."
 
     def product_price_should_match_the_cart_cost_in_message(self):
