@@ -3,16 +3,16 @@ from .locators import ProductPageLocators
 
 
 class ProductPage(BasePage):
-    def should_be_add_product_to_cart(self):
-        self.add_product_to_cart()
+    def should_be_add_product_to_basket(self):
+        self.add_product_to_basket()
         self.get_quiz_result()
         self.should_product_name_in_message()
         self.should_product_price_in_message()
 
-    def add_product_to_cart(self):
+    def add_product_to_basket(self):
         """Нажимаем на кнопку 'Добавить в корзину'"""
-        add_to_cart_button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON)
-        add_to_cart_button.click()
+        add_to_basket_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
+        add_to_basket_button.click()
 
     def get_quiz_result(self):
         """Посчитать результат математического выражения и ввести ответ на печать"""
@@ -22,15 +22,15 @@ class ProductPage(BasePage):
         """Проверить, что в сообщении о том, что товар добавлен в корзину
         - название товара совпадает с тем товаром, который был добавлен"""
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
-        message_product_added = self.browser.find_element(*ProductPageLocators.MESSAGE_PRODUCT_ADDED_TO_CART).text
+        message_product_added = self.browser.find_element(*ProductPageLocators.MESSAGE_PRODUCT_ADDED_TO_BASKET).text
         assert product_name == message_product_added,\
-            "The product name in the message does not match the product that was added to the cart."
+            "The product name in the message does not match the product that was added to the basket."
 
     def should_product_price_in_message(self):
         """Проверить, что стоимость корзины совпадает с ценой товара"""
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
-        cost_cart_massage = self.browser.find_element(*ProductPageLocators.MESSAGE_COST_THE_CART).text
-        assert product_price == cost_cart_massage, "The price of the item does not match the cart price in the message."
+        cost_basket_massage = self.browser.find_element(*ProductPageLocators.MESSAGE_COST_THE_BASKET).text
+        assert product_price == cost_basket_massage, "The price of the item does not match the basket price in the message."
 
     def should_not_be_success_message(self):
         """Проверить, что сообщение об успешном добавлении товара в корзину - не отображается"""

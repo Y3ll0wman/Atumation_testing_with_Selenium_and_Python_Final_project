@@ -34,16 +34,6 @@ supported_languages = {
 }
 
 
-@pytest.fixture(scope="function")
-def login():
-    return '**********'
-
-
-@pytest.fixture(scope="function")
-def password():
-    return '**********'
-
-
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default="chrome",
                      help="Choose browser: chrome or firefox")
